@@ -6,7 +6,7 @@ from django.test import Client, RequestFactory, TestCase
 from django.urls import reverse
 
 from shop.models import Category, Product
-from shop.views import all_products
+from shop.views import product_all
 
 # @skip("demonstrating skipping")
 # class TestSkip(TestCase):
@@ -51,7 +51,7 @@ class TestViewResponses(TestCase):
         Example: code validation, search HTML for text
         """
         request = HttpRequest()
-        response = all_products(request)
+        response = product_all(request)
         html = response.content.decode('utf8')
         self.assertIn('<title>Home</title>', html)
         self.assertTrue(html.startswith('\n<!DOCTYPE html>\n'))
@@ -62,7 +62,7 @@ class TestViewResponses(TestCase):
         Example: Using request factory
         """
         request = self.factory.get('/item/django-beginners')
-        response = all_products(request)
+        response = product_all(request)
         html = response.content.decode('utf8')
         self.assertIn('<title>Home</title>', html)
         self.assertTrue(html.startswith('\n<!DOCTYPE html>\n'))
