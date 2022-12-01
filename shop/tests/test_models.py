@@ -17,6 +17,7 @@ class TestCategoriesModel(TestCase):
         self.assertTrue(isinstance(data, Category))
         self.assertEqual(str(data), 'django')
 
+
 class TestProductsModel(TestCase):
     def setUp(self):
         Category.objects.create(name='django', slug='django')
@@ -31,4 +32,3 @@ class TestProductsModel(TestCase):
         data = self.data1
         self.assertTrue(isinstance(data, Product))
         self.assertEqual(str(data), 'django beginners')
-
