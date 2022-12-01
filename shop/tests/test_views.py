@@ -33,20 +33,27 @@ class TestViewResponses(TestCase):
         response = self.c.get('/', HTTP_HOST='yourdomain.com')
         self.assertEqual(response.status_code, 200)
 
+    def test_homepage_url(self):
+        """
+        Test homepage response status
+        """
+        response = self.c.get('/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_product_list_url(self):
+        """
+        Test category response status
+        """
+        response = self.c.get(
+            reverse('shop:category_list', args=['django']))
+        self.assertEqual(response.status_code, 200)
+
     def test_product_detail_url(self):
         """
         Test items response status
         """
         response = self.c.get(
             reverse('shop:product_detail', args=['django-beginners']))
-        self.assertEqual(response.status_code, 200)
-
-    def test_category_detail_url(self):
-        """
-        Test category response status
-        """
-        response = self.c.get(
-            reverse('shop:category_list', args=['django']))
         self.assertEqual(response.status_code, 200)
 
     def test_homepage_html(self):
