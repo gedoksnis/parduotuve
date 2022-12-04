@@ -14,13 +14,19 @@ class Basket():
             basket = self.session['skey'] = {}
         self.basket = basket
 
-    def add(self, product):
+    def add(self, product, qty):
         """
         Naudotojų krepšelio seanso duomenų įtraukimas ir atnaujinimas
         """
         product_id = product.id
 
         if product_id not in self.basket:
-            self.basket[product_id] = {'price': int(product.price)}
+            self.basket[product_id] = {'price': str(product.price), 'qty':int(qty)}
 
         self.session.modified = True
+
+    def __len__(self):
+        """
+        Gauti krepšelio duomenis ir suskaičiuoti prekių kiekį
+        """
+        return sum(item['qty'] for item in self.basket.values())
