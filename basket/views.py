@@ -6,7 +6,8 @@ from shop.models import Product
 from .basket import Basket
 
 def basket_summary(request):
-    return render(request, 'shop/basket/summary.html')
+    basket = Basket(request)
+    return render(request, 'shop/basket/summary.html', {'basket': basket})
 
 
 def basket_add(request):
