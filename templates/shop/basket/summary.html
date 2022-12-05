@@ -41,15 +41,12 @@
                         <option value="8">8</option>
                         <option value="9">9</option>
                   </select>
-                  <button type="button" id="update-button" data-index="{{product.id}}"
-                    class="btn btn-outline-secondary btn-sm update-button">
+                  <button type="button" id="update-button" data-index="{{product.id}}" class="btn btn-outline-secondary btn-sm update-button">
                     Įdėti
                   </button>
-                  <button type="button" id="delete-button" data-index="{{product.id}}"
-                    class="btn btn-outline-secondary btn-sm delete-button">
+                  <button type="button" id="delete-button" data-index="{{product.id}}" class="btn btn-outline-secondary btn-sm delete-button">
                     Ištrinti
-                  </button>
-                  
+                  </button>                  
                 </div>
               </div>
             </div>
@@ -63,5 +60,26 @@
       </div>
     </div>
   </main>
-  
+
+<script>
+  $(document).on('click', '.delete-button', function (e) {
+    e.preventDefault();
+    var prodid = $(this).data('index');
+    $.ajax({
+      type: 'POST',
+      url: '{% url "basket:basket_delete" %}',
+      data: {
+        productid: $(this).data('index'),
+        csrfmiddlewaretoken: "{{csrf_token}}",
+        action: 'post'
+      },
+      success: function (json) {
+        $('.product-item[data-index="' + prodid + '"]').remove();
+        document.getElementById("subtotal").innerHTML = json.subtotal;
+        document.getElementById("basket-qty").innerHTML = json.qty
+      },
+      error: function (xhr, errmsg, err) {}
+    });
+  })
+</script>
 {% endblock %}
