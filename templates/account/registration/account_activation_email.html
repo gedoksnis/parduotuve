@@ -1,0 +1,7 @@
+{% autoescape off %}
+Sveiki {{ user.user_name }},
+
+Jūsų paskyra sukurta. Paspaudę nuorodą ją aktyvuosite
+
+http://{{ domain }}{% url 'account:activate' uidb64=uid token=token %}
+{% endautoescape %}
