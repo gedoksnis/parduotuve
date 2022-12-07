@@ -98,13 +98,13 @@ def edit_details(request):
                   'account/user/edit_details.html', {'user_form': user_form})
 
 
-# @login_required
-# def delete_user(request):
-#     user = UserBase.objects.get(user_name=request.user)
-#     user.is_active = False
-#     user.save()
-#     logout(request)
-#     return redirect('account:delete_confirmation')
+@login_required
+def delete_user(request):
+    user = UserBase.objects.get(user_name=request.user)
+    user.is_active = False
+    user.save()
+    logout(request)
+    return redirect('account:delete_confirmation')
 
 @login_required
 def dashboard(request):  
