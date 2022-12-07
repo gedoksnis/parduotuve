@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-3ri*bmqi2!62$n_jl0nfjat)^e6-iz&$t0n!uw%lwa@pq443l6
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['yourdomain.com', '127.0.0.1']
+ALLOWED_HOSTS = ['yourdomain.com', '127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -19,6 +19,8 @@ INSTALLED_APPS = [
     'shop',
     'basket',
     'account',
+    'payment',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -94,6 +96,8 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+BASKET_SESSION_ID = 'basket'
+
 # Kitas vartotojo modelis
 AUTH_USER_MODEL = 'account.UserBase'
 LOGIN_REDIRECT_URL = '/account/dashboard'
@@ -102,3 +106,9 @@ LOGIN_URL = '/account/login/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Stripe Payment
+PUBLISHABLE_KEY = 'pk_test_51MCOouBhz5NErXMiHEIuedgwZEm3EUF5bzsEcaRQl7hUtlaLx24lz1rlBoryEdLtFnY1MkjFOjDPnTOo1Dzr8T0q00T8K5GWmg'
+SECRET_KEY = 'sk_test_51MCOouBhz5NErXMihojVlNzhajupsAYZOAGs6T6n85eMmUwsJGNngk19pi627Oku9YL3MGDrXsU1nWmLRGCXndBP00aoyLo45F'
+STRIPE_ENDPOINT_SECRET = 'whsec_3d0b69b3077413b1e85254026e46859b121feafe87d97434d349ed914dfb16d6'
+# stripe listen --forward-to localhost:8000/payment/webhook/

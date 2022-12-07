@@ -1,4 +1,7 @@
-{% extends "../../shop/base.html" %} {% load static %} {% block title %}Basket Summary{%endblock %} {% block content %}
+{% extends "../../shop/base.html" %} 
+{% load static %} 
+{% block title %}Basket Summary{%endblock %} 
+{% block content %}
 
 <main class="pt-5">
   <div class="container" style="max-width: 1000px">
@@ -8,7 +11,7 @@
     <div class="col-12 d-flex justify-content-between">
       <div>Tvarkykite savo <b>užsakymus</b> ir asmeninę informaciją</div>
       <div><a href="{% url "account:edit_details" %}">Pakeisti detales</a></div>
-    {% comment %} </div>
+    </div>
     <hr />
   </div>
   <div class="container" style="max-width: 1000px">
@@ -21,7 +24,7 @@
           <div class="pe-3">{{ order.created }}</div>
           <div class="dropdown">
           <a class="text-reset text-decoration-none dropdown-toggle" href="#" role="link" id="dropdownLink" data-bs-toggle="dropdown" aria-expanded="false">
-          Dispacted to 
+            Išsiųsta į 
           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
           </svg>
@@ -73,13 +76,9 @@
       </div>
 
     </div>
-    {% endfor %} {% endcomment %}
+    {% endfor %}
 
   </div>
 </main>
-
-
-
-
 
 {% endblock %}

@@ -1,0 +1,16 @@
+Stripe testing:
+
+No authentification: 4242424242424242 (Visa kortelė)
+                     4000056655665556 (Visa (debit))
+                     5555555555554444 (Mastercard)
+
+
+Authenticate unless set up:  4000002500003155
+
+Always authenticate:  4000002760003184
+
+
+erors:
+Insufficient funds decline: 4000000000009995
+Expired card decline: 4000000000000069
+Processing error decline:Processing error decline
