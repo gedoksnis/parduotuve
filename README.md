@@ -8,4 +8,4 @@ py manage.py runserver
 2) username = admin  
 3) password = Gediminas321
 
-el. pašto registracijos patvirtinimas per terminalą
+Vartotojo el. pašto registracijos patvirtinimas per terminalą
